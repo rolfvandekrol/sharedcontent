@@ -1,0 +1,5 @@
+name = Shared Content
+
+core = 6.x
+
+dependencies[] = userreference
