@@ -72,8 +72,8 @@ function sharedcontent_node_access_records($node) {
           'realm' => 'sharedcontent',
           'gid' => $node->uid,
           'grant_view' => 1, 
-          'grant_update' => user_access('edit any ' . $name . 'content') || user_access('edit own ' . $name . 'content'), 
-          'grant_delete' => user_access('delete any ' . $name . 'content') || user_access('delete own ' . $name . 'content')
+          'grant_update' => user_access('edit any ' . $name . 'content', $account) || user_access('edit own ' . $name . 'content', $account), 
+          'grant_delete' => user_access('delete any ' . $name . 'content', $account) || user_access('delete own ' . $name . 'content', $account),
         );
       }
     }
@@ -90,6 +90,9 @@ function sharedcontent_node_access_records($node) {
   return $records;
 }
 
+/**
+ * Implementation of hook_node_grants().
+ */
 function sharedcontent_node_grants($account, $op) {
   $grants = array();
   
